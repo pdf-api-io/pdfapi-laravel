@@ -22,7 +22,7 @@ class PdfapiLaravelServiceProvider extends PackageServiceProvider
     public function packageBooted()
     {
         $this->app->singleton(PdfApi::class, function ($app) {
-            return new PdfApi(config('pdfapi-laravel.api_key'));
+            return new PdfApi(config('pdfapi.api_key'));
         });
     }
 }
