@@ -2,8 +2,8 @@
 
 namespace Pdfapiio\PdfapiLaravel;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Support\Facades\Http;
 use Pdfapiio\PdfapiLaravel\Enums\ApiOutputType;
 
 class PdfApi

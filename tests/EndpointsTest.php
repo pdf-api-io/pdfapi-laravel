@@ -1,9 +1,9 @@
 <?php
 
-use Pdfapiio\PdfapiLaravel\PdfApi;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Pdfapiio\PdfapiLaravel\Enums\ApiOutputType;
+use Pdfapiio\PdfapiLaravel\PdfApi;
 
 beforeEach(function () {
     Http::fake([
