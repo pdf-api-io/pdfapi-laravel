@@ -16,7 +16,7 @@ class PdfapiLaravelServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('pdfapi-laravel')
-            ->hasConfigFile();
+            ->hasConfigFile('pdfapi');
     }
 
     public function packageBooted()
