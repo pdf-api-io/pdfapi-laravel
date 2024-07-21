@@ -3,6 +3,7 @@
 namespace Pdfapiio\PdfapiLaravel;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\PendingRequest;
 use Pdfapiio\PdfapiLaravel\Enums\ApiOutputType;
 
 class PdfApi
@@ -38,10 +39,15 @@ class PdfApi
         return $this;
     }
 
-    public function getTemplates(): mixed
+    public function request(): PendingRequest
     {
         return Http::baseUrl(self::API_URL)
-            ->withToken($this->apiKey)
+            ->withToken($this->apiKey);
+    }
+
+    public function getTemplates(): mixed
+    {
+        return $this->request()
             ->withHeader('Accept', 'application/json')
             ->get('/templates')
             ->json();
@@ -49,8 +55,7 @@ class PdfApi
 
     public function render(string $templateId, array $data): mixed
     {
-        $response = Http::baseUrl(self::API_URL)
-            ->withToken($this->apiKey)
+        $response = $this->request()
             ->withHeader('Content-Type', 'application/json')
             ->withHeader('Accept', $this->accept)
             ->post("/templates/{$templateId}/pdf", [
@@ -63,10 +68,9 @@ class PdfApi
             : $response->body();
     }
 
-    public function merge(array $templates)
+    public function merge(array $templates): mixed
     {
-        return Http::baseUrl(self::API_URL)
-            ->withToken($this->apiKey)
+        return $this->request()
             ->withHeader('Content-Type', 'application/json')
             ->withHeader('Accept', $this->accept)
             ->post('/templates/merge', [
