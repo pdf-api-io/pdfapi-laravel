@@ -29,7 +29,15 @@ return [
 ];
 ```
 
+Create an access token if you don't have one yet. You can do this visiting the [PDF-API.io API token page](https://pdf-api.io/app/api-tokens). Add the following line to your `.env` file:
+
+```bash
+PDF_API_KEY=your-api-key
+```
+
 ## Usage
+
+You can read the full documentation on the [PDF-API.io website](https://pdf-api.io/en/docs).
 
 ### List available templates
 
